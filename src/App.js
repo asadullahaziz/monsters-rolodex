@@ -1,13 +1,19 @@
+// Libraries
 import React, { Component } from 'react';
+
+// styles
 import './App.css';
 
+// components
 import {CardList} from "./components/card-list/card-list.component";
+import {Search} from "./components/search/search.component";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      monsters: []
+      monsters: [],
+      search: ""
     }
   }
 
@@ -19,9 +25,12 @@ class App extends Component {
   }
 
   render() {
+    const {monsters, search} = this.state;
+    const filteredMonsters = monsters.filter((monster) => monster.name.toLowerCase().includes(search.toLocaleLowerCase()));
     return (
       <div className="App">
-        <CardList monsters={this.state.monsters} />
+        <Search placeholder="Search Monsters" filter={(event) => this.setState({search: event.target.value})} />
+        <CardList monsters={filteredMonsters} />
       </div>
     );
   }
