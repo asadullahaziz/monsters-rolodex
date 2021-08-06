@@ -1,7 +1,15 @@
 .card-list {
-    width: 85vw;
+    max-width: 85vw;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
+
+/* @media (min-width: 600px) {
+    .cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 900px) {
+    .cards { grid-template-columns: repeat(3, 1fr); }
+} */
