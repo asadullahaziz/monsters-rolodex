@@ -21,7 +21,7 @@ class App extends Component {
     fetch("https://jsonplaceholder.typicode.com/users")
     .then(response => response.json())
     .then(data => this.setState({monsters: data}))
-    .catch(error => console.log("Error Accoured -->  " + error));
+    .catch(error => console.log(error));
   }
 
   render() {
@@ -29,6 +29,7 @@ class App extends Component {
     const filteredMonsters = monsters.filter((monster) => monster.name.toLowerCase().includes(search.toLocaleLowerCase()));
     return (
       <div className="App">
+        <h1>Monsters Rolodex</h1>
         <Search placeholder="Search Monsters" filter={(event) => this.setState({search: event.target.value})} />
         <CardList monsters={filteredMonsters} />
       </div>
